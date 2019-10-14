@@ -1,0 +1,1 @@
+INSERT INTO `myshop_users` VALUES (1, 10000, '123456', '1234567890', '', 'FS-10000');

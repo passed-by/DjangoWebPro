@@ -1,0 +1,14 @@
+INSERT INTO `myshop_activities` VALUES (1, 100311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (2, 100311, '/static/img/list02.png', '#');
+INSERT INTO `myshop_activities` VALUES (3, 200311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (4, 200311, '/static/img/list02.png', '#');
+INSERT INTO `myshop_activities` VALUES (5, 300311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (6, 300311, '/static/img/list02.png', '#');
+INSERT INTO `myshop_activities` VALUES (7, 400311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (8, 400311, '/static/img/list02.png', '#');
+INSERT INTO `myshop_activities` VALUES (9, 500311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (10, 500311, '/static/img/list02.png', '#');
+INSERT INTO `myshop_activities` VALUES (11, 600311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (12, 600311, '/static/img/list02.png', '#');
+INSERT INTO `myshop_activities` VALUES (13, 700311, '/static/img/list01.png', '#');
+INSERT INTO `myshop_activities` VALUES (14, 700311, '/static/img/list02.png', '#');

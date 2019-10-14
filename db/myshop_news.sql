@@ -1,0 +1,12 @@
+INSERT INTO `myshop_news` VALUES (1, '公告', '海南浪漫双人游', '#');
+INSERT INTO `myshop_news` VALUES (2, '快讯', '从跨界到破界，风尚购物获首届中国电视购物行业年会“年度卓越奖”', '#');
+INSERT INTO `myshop_news` VALUES (3, '公告', '海南浪漫双人游', '#');
+INSERT INTO `myshop_news` VALUES (4, '公告', '风尚购成功挂牌新三版', '#');
+INSERT INTO `myshop_news` VALUES (5, '公告', '如何使用礼金代金券编码', '#');
+INSERT INTO `myshop_news` VALUES (6, '公告', '品牌店中店销售说明', '#');
+INSERT INTO `myshop_news` VALUES (7, '公告', '网上订购直播商品立减20元', '#');
+INSERT INTO `myshop_news` VALUES (8, '公告', '风尚购物之购物说明', '#');
+INSERT INTO `myshop_news` VALUES (9, '公告', '配送地址及收费说明', '#');
+INSERT INTO `myshop_news` VALUES (10, '帮助', '支付方式说明', '#');
+INSERT INTO `myshop_news` VALUES (11, '帮助', '售后服务政策', '#');
+INSERT INTO `myshop_news` VALUES (12, '帮助', '积分说明', '#');

@@ -1,0 +1,12 @@
+INSERT INTO `myshop_livetv` VALUES (1, '/static/img/big07.png', '17:20~19:20', '正大酱鸭美味套组', 179.00, '立减20元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (2, '/static/img/201608051513395705488.jpg', '16:40~17:20', '雪润滋补乌鸡汤套组', 379.00, '立减20元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (3, '/static/img/sm02.png', '19:20~21:20', '三星新款5英寸智能手机', 979.00, '立减99元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (4, '/static/img/bigimg05.png', '21:20~23:20', '杉杉刺绣婚庆提花9+6套组', 979.00, '立减89元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (5, '/static/img/01/maton.png', '23:20~24:20', '百利佳节能水虹式坐便器', 979.00, '立减99元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (6, '/static/img/sml07.jpg', '00:00~02:20', '六福精品收藏把玩套组', 979.00, '立减59元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (7, '/static/img/sml06.png', '02:00~04:20', '茅台济开富贵万年8品鉴', 979.00, '立减59元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (8, '/static/img/sml95.png', '04:00~06:20', '女士印花棉羊皮皮羽绒', 979.00, '立减59元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (9, '/static/img/002.png', '06:00~08:20', '\"马踏飞燕\"多功能太阳镜', 199.00, '立减29元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (10, '/static/img/001.png', '08:00~12:20', '\"开成印花冰丝席清凉一夏套组\"', 299.00, '立减39元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (11, '/static/img/bigimg01.png', '12:00~14:20', '\"洁宜佳活氧洁净管家套组\"', 129.00, '立减19元', 100, 0);
+INSERT INTO `myshop_livetv` VALUES (12, '/static/img/01/201608291415284615394.png', '14:00~16:40', '\"皇室金爵干红6瓶组\"', 889.00, '立减99元', 100, 0);
