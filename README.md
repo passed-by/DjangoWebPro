@@ -1,15 +1,15 @@
 # DjangoWebPro
 基于Django框架的电商项目
 
-#### 使用工具
+#### 1.使用工具
 - MySQL5.7
 - Pycharm profession 2019.1.3
 - Redis
 
-#### 使用Django版本
+#### 2.使用Django版本
 > django == 1.11.11
 
-#### 实现功能
+#### 3.实现功能
 - 登录,注册
   - 发送手机短信 登录/注册 (使用云之讯);
   
@@ -34,7 +34,7 @@
 - 子订单详情页面
   - 展示总订单下详细购买商品内容;
   
-#### 数据库分支
+#### 4.数据库分支
 **myshop**
   - myshop_goods(商品库)
   - myshop_activities(一级分类活动)
