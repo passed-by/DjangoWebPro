@@ -33,3 +33,17 @@
   
 - 子订单详情页面
   - 展示总订单下详细购买商品内容;
+  
+#### 数据库分支
+**myshop**
+  - myshop_goods(商品库)
+  - myshop_activities(一级分类活动)
+  - myshop_goodstype(商品分类库)
+  - myshop_livetv(在线直播库)
+  - myshop_news(新闻库)
+  - myshop_order_detail(子订单库)
+  - myshop_orders(总订单库)
+  - myshop_todayperfer(今日推荐)
+  - myshop_tvhot(tv热播)
+  - myshop_users(电商用户类)
+  - myshop_wheel(轮播图类)
