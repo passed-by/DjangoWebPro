@@ -166,7 +166,6 @@ def pay(request, order_code):
 
     order = Order.objects.get(order_code=order_code)
 
-    # 生成登录支付宝连接   idxswb4074@sandbox.com  111111
     order_string = alipay.api_alipay_trade_page_pay(
         out_trade_no=order_code,
         total_amount=float(order.total_amount),
