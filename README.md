@@ -1,6 +1,12 @@
 # DjangoWebPro
 基于Django框架的电商项目
 
+# 目录
+  - 使用工具
+  - 使用Django版本
+  - 实现功能
+  - 数据库分支
+
 #### 1.使用工具
 - MySQL5.7
 - Pycharm profession 2019.1.3
