@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="keywords" content="风尚购物，江西风尚购物，风尚购物官方网站，江西电视台风尚购物，电视购物频道，家庭购物">
+		<meta name="description" content="风尚购物在线商城新版上线，注册即送50元套券，直播商品在线订购立减20元。100%正品保证，全场免邮，全新的家庭购物体验，让您足不出户享受时尚购物新生活。">
+		<link rel="shortcut icon" href=http://resource.fstvgo.com/image/Favicon.ico />
+		<title>风尚购物-江西电视台风尚购物官方网站，全新的家庭购物体验</title>
+		<link rel="stylesheet" href="/static/css/fstvgo.css" />
+		<link rel="stylesheet" href="/static/css/ux_1474353364_3114414/demo.css" />
+		<link rel="stylesheet" href="/static/css/ux_1474353364_3114414/iconfont.css" />
+		<script type="text/javascript" src="/static/js/jquery-1.12.3.js" ></script>
+		<script type="text/javascript" src="/static/js/fstvgo.js"></script>
+		<script type="text/javascript" src="/static/js/slider.js"></script>
+        <script type="text/javascript" src="/static/js/format.js"></script>
+        {% block cssjs %}
+        
+        {% endblock %}
+
+	</head>
+
+	<body>
+    <div id="prism">
+        <div class="pri_1">
+            <div class="p_center">
+
+                <div class="p_center_cart">
+
+                    <p class="p_cart">
+
+                        <i class="iconfont">&#xe600;</i>
+                        <div style="width:18px;padding: 8px 8px 0px 8px;" id="cart1">购物车</div>
+
+                    </p>
+
+                </div>
+
+                <div class="p_center_uergood">
+                    <a>
+                        <i class="iconfont">&#xe603;</i>
+                        <b>我的订单</b>
+                    </a>
+                </div>
+                <div class="p_center_uertick">
+                    <a>
+                        <i class="iconfont">&#xe605;</i>
+                        <b>抵用券</b>
+                    </a>
+                </div>
+                <div class="p_center_uerlove">
+                    <a style="">
+                        <b>我的收藏</b>
+                        <i class="iconfont">&#xe601;</i>
+                    </a>
+                </div>
+            </div>
+            <div class="p_foot">
+                <div class="p_foot_uerthink">
+                    <a>
+                        <i class="iconfont">&#xe604;</i>
+                        <b>用户反馈</b>
+                    </a>
+                </div>
+                <div class="p_foot_uerma">
+                    <a>
+                        <i class="iconfont">&#xe602;</i>
+                        <em><img src="/static/img/03/QRCodeHandler.png" style="width: 100px;height: 100px;"/></em>
+                    </a>
+                </div>
+                <div class="p_foot_uerup">
+                    <a>
+                        <i class="iconfont" id="totop">&#xe606;</i>
+                        <b>返回顶部</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="par">
+
+        <div class="par1">
+            <div class="par_box">
+                <div id="first_list">
+                    <ul>
+                        <li>
+                            <a href="#">我的订单</a>
+                        </li>
+                        <li>
+                            <a href="#">我的积分</a>
+                        </li>
+                        <li>
+                            <a href="#">我的优惠券</a>
+                        </li>
+                        <li>
+                            <a href="#">我的消息</a>
+                        </li>
+                        <li>
+                            <a href="#">我的收藏</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="par1_r">
+                    <input type="hidden" id="islogin" value="{{ islogin }}">
+                    {% if islogin %}
+                        <p>
+                            <label>你好，</label>
+                            <a href="#" style="font-size: 14px;color: red" id="onlineuser">{{ islogin }}</a>&nbsp;
+                            <label>用户!</label>&nbsp;&nbsp;
+                            <a href="{% url 'user:logout' %}">[退出]</a>&nbsp;&nbsp;
+                            <a></a>
+                        </p>
+                    {% else %}
+                        <p>
+                            <a href="{% url 'user:login' %}">登录</a>&nbsp;&nbsp;&nbsp;
+                            <a href="{% url 'user:register' %}">免费注册&nbsp;|&nbsp;<label style="color : #d32402;">送50元</label></a>&nbsp;&nbsp;&nbsp;
+                            <a href="#">电话订购会员登录&nbsp;|&nbsp;<label style="color: #d32402;">送50元</label></a>&nbsp;&nbsp;&nbsp;
+                        </p>
+                    {% endif %}
+                    <p>
+                        <a href="#" id="show_id">我的风尚</a>
+                    </p>
+                </div>
+            </div>
+		</div>
+
+
+
+
+
+
+		</div>
+		<div id="dock">
+			<div class="h_cont">
+				<div class="h_contM">
+					<input type="text" placeholder="请输入商品关键词或货号" class="h_text" /><input type="button" value="搜 索" class="h_input" />
+				</div>
+			</div>
+		</div>
+
+		<div id="head">
+			<div class="h_cont">
+				<a href="{% url 'contents:index' %}"><img src="/static/img/风尚购物_03.gif" class="h_img1" /></a>
+				<a href="#"><img src="/static/img/风尚购物_05.gif" class="h_img2" /></a>
+				<div class="h_contM">
+					<input type="text" placeholder="请输入商品关键词或货号" class="h_text" /><input type="button" value="搜 索" class="h_input" />
+					<p>热门搜索 ：
+						<a href="#">手表</a>&nbsp;
+						<a href="#">海参</a>&nbsp;
+						<a href="#">国宾</a>&nbsp;
+						<a href="#">洗衣机</a>&nbsp;
+						<a href="#">拖把</a>&nbsp;
+						<a href="#">窗帘</a>&nbsp;
+						<a href="#">蚕丝被</a>&nbsp;
+						<a href="#">羽绒服</a>&nbsp;
+						<a href="#">皮衣</a>
+					</p>
+				</div>
+				<div class="h_contR">
+                    <a href="{% url 'carts:index' %}">
+                        <p>{{ totalnum }}</p>
+                        <img src="/static/img/风尚购物_07.jpg" />
+                        <input type="button" value="去购物车结算" class="tocart" />
+                    </a>
+				</div>
+			</div>
+		</div>
+
+
+    {% block main %}
+    
+    {% endblock %}
+
+
+		<div id="meg">
+			<div class="meg_c">
+				<h3 style="margin-left:210px;display:inline-block;font-size: 18px;font-weight: bold;line-height: 48px;">免费订阅优惠信息</h3><input type="text" placeholder="请输入你的邮箱" class="input1" style="margin-left: 10px;" /><input type="button" value="确认" class="input2" /><span style="display: inline-block;font-size: 12px;color:#999;line-height: 48px;margin-left: 15px;">我们会将最新的促销优惠信息发送给您</span>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="foot_left">
+				<dl>
+					<dt>帮助中心</dt>
+					<dd>
+						<a href="#">购物流程</a>
+						<a href="#">积分规则</a>
+						<a href="#">积分绑定使用</a>
+						<a href="#">订单状态说明</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>配送方式</dt>
+					<dd>
+						<a href="#">免费配送地区</a>
+						<a href="#">配送范围</a>
+						<a href="#">收费标准</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>支付方式</dt>
+					<dd>
+						<a href="#">货到付款</a>
+						<a href="#">银联支付</a>
+						<a href="#">支付宝</a>
+						<a href="#">微信支付</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>客户服务</dt>
+					<dd>
+						<a href="#">售后及退换货</a>
+						<a href="#">在线客服</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>会员中心</dt>
+					<dd>
+						<a href="#">资料修改</a>
+						<a href="#">找回密码</a>
+						<a href="#">会员等级</a>
+						<a href="#">会员权益</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>招商专区</dt>
+					<dd>
+						<a href="#">关于我们</a>
+						<a href="#">合作流程</a>
+						<a href="#">联系我们</a>
+						<a href="#">供应商系统</a>
+					</dd>
+				</dl>
+				<dl id="dl_last">
+					<dt>关注我们</dt>
+					<dd>
+						<a href="#">招贤纳士</a>
+						<a href="#"><img src="/static/img/01/weiboco.png" /></a>
+						<a href="#"><img src="/static/img/01/weixinco.png" /></a>
+					</dd>
+				</dl>
+				<ul>
+					<li><img src="/static/img/tellphone.gif"> </li>
+				</ul>
+			</div>
+		</div>
+		<div id="last">
+			<div class="last_text">
+				<span><a href="#">触屏版</a></span>
+				<span><a href="#">电脑版</a></span>
+				<h3>ICP经营许可证：赣ICP备15000001号</h3>
+				<h3>24小时订购和服务热线：4001-677-077</h3>
+				<h3>Copyright 2008-2014，www.fstvgo.com 风尚购物 版权所有</h3>
+				<h3>本网站用字经北京北大方正电子有限公司授权许可</h3>
+			</div>
+		</div>
+	</body>
+    {% block last_js %}
+    
+    {% endblock %}
+
+<script>
+
+    $(function () {
+         {# 购物车跳转 #}
+         $(".p_center_cart").click(function(){
+            window.location.href="{% url 'carts:index' %}";
+        })
+
+        {# 订单跳转 #}
+         $(".p_center_uergood").click(function(){
+            window.location.href="{% url 'orders:index' %}";
+        })
+
+        {# 商品标题颜色 #}
+        var i = 0
+        var colors = ['#ff5500','black','#e7604c','#009adf','#e74c8a','#179442','#0c5ba0']
+        $('.live').each(function () {
+            $(this).eq(i).find('.l_one').css("border-bottom",'3px solid '+colors[i])
+            $(this).eq(i).find('h3').css("color",colors[i])
+            $(this).eq(i).find('.c_sp').css("color",colors[i])
+            $(this).eq(i).find('.c_sp').css("background","/static/img/floor3.gif")
+            i += 1
+        })
+
+
+
+
+    })
+
+</script>
+
+
+</html>

@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{% load integralfilter %}
+
+
+
+{% block cssjs %}
+
+    <link rel="stylesheet" href="/static/css/details.css" />
+    <script type="text/javascript" src="/static/js/details.js"></script>
+
+{% endblock %}
+
+
+{% block main %}
+    
+		<!--第三部分01-->
+		<div id="contents">
+			<div class="cc_list">
+				    {% for types in alltype.values %}
+
+					<div class="list_show">
+						<div class="show_l">
+
+                            {% for type in types.type %}
+                                <a href="#{{ types.id }}">{{ type }}</a>
+                            {% endfor %}
+
+						</div>
+						<div class="show_m">
+							<h3>推荐品牌</h3>
+                            {% for brand in types.brand %}
+                                <a href="#">{{ brand }}</a>
+                            {% endfor %}
+
+{#      乐扣乐扣:1#妙煮妇:0#太古:0#爱仕达:1#老工匠:1#康佳:0#批得斯卡:0#白玉兰:0              #}
+						</div>
+						<div class="show_r">
+							<h3>热门活动</h3>
+
+                            {% for activitie in types.activities %}
+                                <a href="#"><img src="{{ activitie }}" /></a>
+                            {% endfor %}
+
+						</div>
+					</div>
+
+                    {% endfor %}
+
+
+				<ul class="c_list_ul">
+                        {% for idk,idv in ids.items %}
+                            <li>
+                                <a href="#{{ idv }}">{{ idk }}</a>
+                            </li>
+                        {% endfor %}
+
+					</ul>
+
+				<div class="c_pai">
+						<h3>热门品牌</h3>
+						<dl>
+
+                            {% for hotbrand in hotbrands %}
+                                <dd style="width: 58px;float: left;height: 20px;padding: 0;text-align: left">
+                                    <a href="#">{{ hotbrand }}</a>
+                                </dd>
+
+                            {% endfor %}
+
+
+						</dl>
+					</div>
+			</div>
+			<div id="cont">
+				<div class="c_nav" style="width: 1200px;">
+					<ul class="c_nav_ul">
+						<li class="f_li">全部商品分类</li>
+						<li>
+							<a href="#">首页</a>
+						</li>
+						<li>
+							<a href="#">电视直播</a>
+						</li>
+						<li>
+							<a href="#">热卖榜</a>
+						</li>
+						<li>
+							<a href="#">风尚榜</a>
+						</li>
+						<li>
+							<a href="#">手机购物</a>
+						</li>
+						<li>
+							<a href="#">品牌店中店</a>
+						</li>
+					</ul>
+					<div class="online"></div>
+				</div>
+				<div class="g_top">
+					<h3>所有类别</h3>
+					<a href="#">服饰配件</a>
+					<a href="#">鞋帽配饰</a>
+				</div>
+			</div>
+			<div id="glass">
+				<div class="gl_left">
+					<div class="gl_big">
+						<div id="smlare"></div>
+						<div class="gl_pic" >
+                            <img src="{{ goods.img }}"/>
+						</div>
+					</div>
+					<div class="smlpic">
+						<a class="gleft"><img src="/static/img/03/prevbtn.gif" /></a>
+						<a class="gright"><img src="/static/img/03/nextbtn.gif" /></a>
+						<div class="g_show">
+							<ul>
+								<li><img src="{{ goods.img }}" /></li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="g_link">
+
+						<span>分享到：</span>
+						<a href="#" title="分享到腾讯微博"></a>
+						<a href="#" title="分享到新浪微博" style="background: url('/static/img/03/jiathis_ico.png')no-repeat 0 -96px;"></a>
+						<a href="#" title="分享到人人网" style="background:url('/static/img/03/jiathis_ico.png') no-repeat 0px -160px"></a>
+						<a href="#" style="background: url('/static/img/03/jiathis_ico.png')no-repeat 0 -176px;"></a>
+						<a href="#" style="background: url('/static/img/03/jiathis_ico.png')no-repeat 0 -1408px;"></a>
+						<a href="#" title="累计分享次数" style="background: url('/static/img/03/counter.gif') no-repeat 0px -64px;width: 36px;text-align: center;line-height: 17px;color: #333;font-weight:bold;font-size: 11px;">1</a>
+						<h4 style="float: right;margin-top: 10px;margin-right: 17px;cursor:pointer"><img src="/static/img/03/pr_sc.png"/></h4>
+					</div>
+				</div>
+				<div class="g_middle">
+					<div id="boost">
+
+					</div>
+					<h4>{{ goods.name }}</h4>
+					<div class="m_goods">
+						<p style="color: #999;font-size: 12px;">货&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：<span style="color: #333;" class="id">{{ goods.goodsid }}</span></p>
+						<h3 style="font-size:12px;color: #999;font-weight: normal;">风尚价格：<i class="goodsprice">¥{{ goods.price }}</i></h3>
+					</div>
+					<div class="m_little">
+						<dl>
+							<dt>
+							<p style="color: #f1320a;font-size: 12px;font-weight:bold;">{{ goods.price|calu  }}</p>
+							<h6 style="font-weight: normal;">元网购积分</h6>
+						</dt>
+							<dd>
+								<p style="font-size: 12px;color: #0066cc;font-weight: bold;">{{ goods.sales }}</p>
+								<h6 style="font-weight: normal;">件/件月销量</h6>
+							</dd>
+							<dd>
+								<p style="font-size: 12px;color: #0066cc;font-weight: bold;">{{ goods.comments }}</p>
+								<h6 style="font-weight: normal;">条评价</h6>
+							</dd>
+						</dl>
+					</div>
+					<div>
+						<span>库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存：{{ goods.inventory }}</span>
+
+						<i>&nbsp;现货</i>
+					</div>
+					<div style="margin-top: 15px;" class="num">
+						<span>购买数量：</span>&nbsp;<input type="text" id="number" value="1" style="width: 30px;height: 20px;text-align: center;color: #333;" />&nbsp;<span style="color: #333;">件</span>
+						<p style="display: inline-block;color: #333;">&nbsp;已选择<em style="font-style: normal;font-weight: bold;">"无 无码"</em></p>
+					</div>
+					<div style="margin-top: 15px;">
+						<img src="/static/img/03/quickbtn.png" id="tobuy" gid="{{ goods.goodsid }}" style="cursor: pointer"/>
+						<img src="/static/img/03/addtocart.png" class="addtocart" id="tomycart" gid="{{ goods.goodsid }}" style="cursor: pointer"/>
+					</div>
+
+				</div>
+				<div id="g_right">
+					<p style=>品牌名称：<span><a href="#">{{ goods.frombrand }}</a></span></p>
+					<div class="paizi">
+						<a href="#">进入品牌页面查看更多</a>
+					</div>
+					<div class="blue">
+						<h2>[网购特惠]</h2>
+						<h2>支付宝/银联支付/微信支付</h2>
+						<h2>享受再减10元优惠</h2>
+					</div>
+					<div class="cart">
+						<h3>手机扫码订购</h3>
+						<img src="/static/img/03/QRCodeHandler.png" style=" width:100px;" />
+						<h4>货到付款/支付宝/银联支付/微信支付</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="goods">
+			<div class="good_left"></div>
+			<div class="goods_right">
+				<div class="tab">
+					<ul>
+						<li class="on">商品详情</li>
+						<li>支付/配送/退换货</li>
+						<li>顾客问答 <em>9</em></li>
+						<li>累计评价 <em>0</em></li>
+					</ul>
+				</div>
+				<div id="box">
+					<div class="box1">
+                        {% for k,v in detaildict.items %}
+                            <h2>{{ k }}</h2>
+                            <h2>{{ v }}</h2><br>
+                        {% endfor %}
+
+                    </div>
+					<div class="box2">
+						<h2>支付方式：货到付款 支付宝</h2>
+					</div>
+					<div class="box3">
+						<div class="box33">
+							<div class="box3le">
+								<h3>有问题？我们的专业在线客服会为您解答疑问</h3>
+								<p>共有<em>9</em>条咨询</p>
+							</div>
+							<div class="box3ri">
+								<a>发表咨询</a>
+							</div>
+						</div>
+					</div>
+					<div class="box4"></div>
+				</div>
+			</div>
+		</div>
+
+
+    <script>
+        $(function () {
+            var onlineuser = $('#onlineuser').text()
+
+            if (onlineuser) {
+                onlineuser = onlineuser.slice(3,9)
+            } else {
+                onlineuser = ''
+            }
+            
+            $('#tomycart').click(function () {
+                if (!onlineuser) {
+                    alert('请登录!')
+                    return false
+                }
+
+                var gid = $(this).attr('gid')
+                var number = $('#number').val()
+
+                $.ajax({
+                    url:{% url 'carts:index' %},
+                    type:'post',
+                    data:{
+                        'gid':gid,
+                        'number':number
+                    },
+                    dataType:'json',
+                    headers:{'X-CSRFToken':"{{ csrf_token }}"},
+                    success:function (data) {
+                        if (data.data == 'add-ok') {
+                            alert(format('成功添加{0}件商品!点击购物车查看详情~', data.nums))
+                        } else if (data.data == 'num-bad') {
+                            alert('商品数量格式错误!')
+                        }
+                        console.log(data)
+                    }
+                })
+
+            })
+
+            {# 立即购买 #}
+            $('#tobuy').click(function () {
+                if (!onlineuser) {
+                    alert('请登录!')
+                    return false
+                }
+
+                var gid = $(this).attr('gid')
+                var number = $('#number').val()
+
+                $.ajax({
+                    url:{% url 'orders:buy_now' %},
+                    type:'post',
+                    data:{
+                        'gid':gid,
+                        'number':number
+                    },
+                    dataType:'json',
+                    headers:{'X-CSRFToken':"{{ csrf_token }}"},
+                    success:function (data) {
+                        console.log(data)
+                        if (data.data == 'ok') {
+                            location.href = 'http://localhost:8000/orders/'
+                        } else {
+                            alert('商品数量不足!')
+                        }
+                        console.log(data)
+                    }
+                })
+
+            })
+            
+        })
+    
+    </script>
+
+
+{% endblock %}

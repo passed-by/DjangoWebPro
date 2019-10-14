@@ -1,0 +1,40 @@
+*{margin: 0;padding: 0}
+#logo{width:900px;height: 100px;margin: 0 auto;overflow: hidden;}
+.logo a{display: inline-block;float: left;margin-top: 30px;}
+.logo a:last-child{margin-top: 43px;}
+input{outline: none;}
+a{text-decoration: none;}
+#register{width: 900px;height:530px;margin: 0 auto;}
+.r_top{width: 900px;height: 39px;display: block;border-bottom: 1px solid #333;line-height: 39px;}
+.r_top dt{float: left;line-height: 39px;color:#e1373a;width:112px;position:relative;top:1px;text-align:center;margin-left: 400px;background: url(../img/02/zct1.gif) no-repeat;}
+.r_top dt span{font-size;14px;font-weight:bold}
+.r_top dd{float:right;line-height: 40px;font-size: 12px;}
+.r_top dd i{font-style: normal}
+.r_top dd a{color: #e3393c;font-size: 12px;}
+.c_right{display: block;width: 550px;margin-top: 20px;font:12px/1.5 arial,\5b8b\4f53}
+.c_left img{margin-top: 25px;}
+.c_left,.c_right{float: left;}
+.c_right dl{width: 720px;height:40px;margin-top: 15px;}
+.c_right dt,dd{float:left ;line-height: 38px;margin-left: 10px;}
+.c_right dt b{color:#ff0000;}
+.c_right dt{color: #434343;font-size: 14px;width:120px;text-align: right;}
+.c_right dd{color:#999999;font-size: 12px;}
+.c_right input{width:270px;height: 38px;border:none;}
+.spldl input{width:172px;height:28px;border: 1px solid #ccc;vertical-align: middle;}
+.spldl a{width:88px;height: 28px;line-height: 28px;text-align: center;display:inline-block;border: 1px solid #ccc;color: #434343;}
+.dl1 input{background: url(../img/02/shouji.gif) no-repeat;}
+.dl2 input{background: url(../img/02/youxiang.gif) no-repeat;}
+.dl3 input{background: url(../img/02/mima.gif)no-repeat;}
+.dl4 input{ background: url(../img/02/mima.gif) no-repeat;}
+
+.r_foot input{width:auto;height:auto;vertical-align: middle;margin-right: 3px;}
+.r_foot{font-size: 12px;color:#999999;margin-left: 140px;margin-top: 10px;}
+.r_foot a{color:#999999;}
+.r_foot .uerre{width:270px;margin-top: 25px;display: block;}
+
+
+#fotter{width:100%;height: 174px;border-top: 1px solid #ddd;text-align: center;line-height:2;}
+#fotter span{display:inline-block;margin-top: 30px;}
+#fotter a{line-height:1.5;text-decoration: none;color:#53585F;font-size: 18px;font-weight: bold;}
+#fotter a:visited{color:#C62717;}
+#fotter h3{font-size: 12px;font-weight: 500;color: #999;line-height:2;}

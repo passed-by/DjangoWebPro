@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+{% load integralfilter %}
+
+{% block main %}
+
+
+		<!--第三部分01-->
+		<div id="cont">
+			<div class="c_nav" style="width: 1200px;">
+				<ul class="c_nav_ul">
+					<li class="f_li">全部商品分类</li>
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<a href="#">电视直播</a>
+					</li>
+					<li>
+						<a href="#">热卖榜</a>
+					</li>
+					<li>
+						<a href="#">风尚榜</a>
+					</li>
+					<li>
+						<a href="#">手机购物</a>
+					</li>
+					<li>
+						<a href="#">品牌店中店</a>
+					</li>
+				</ul>
+				<div class="online"></div>
+			</div>
+			<!--第三部分02-->
+			<div class="container">
+				<div class="c_list">
+                    {% for types in alltype.values %}
+
+					<div class="list_show">
+						<div class="show_l">
+
+                            {% for type in types.type %}
+                                <a href="#{{ types.id }}">{{ type }}</a>
+                            {% endfor %}
+
+						</div>
+						<div class="show_m">
+							<h3>推荐品牌</h3>
+                            {% for brand in types.brand %}
+                                <a href="#">{{ brand }}</a>
+                            {% endfor %}
+
+{#      乐扣乐扣:1#妙煮妇:0#太古:0#爱仕达:1#老工匠:1#康佳:0#批得斯卡:0#白玉兰:0              #}
+						</div>
+						<div class="show_r">
+							<h3>热门活动</h3>
+
+                            {% for activitie in types.activities %}
+                                <a href="#"><img src="{{ activitie }}" /></a>
+                            {% endfor %}
+
+						</div>
+					</div>
+
+                    {% endfor %}
+
+					<ul class="c_list_ul">
+                        {% for idk,idv in ids.items %}
+                            <li>
+                                <a href="#{{ idv }}">{{ idk }}</a>
+                            </li>
+                        {% endfor %}
+
+					</ul>
+
+					<div class="c_pai">
+						<h3>热门品牌</h3>
+						<dl>
+
+                            {% for hotbrand in hotbrands %}
+                                <dd style="width: 65px;float: left">
+                                    <a href="#">{{ hotbrand }}</a>
+                                </dd>
+
+                            {% endfor %}
+
+
+						</dl>
+					</div>
+				</div>
+
+
+				<!--第三部分03  轮播图-->
+				<div class="c_show">
+
+					<div class="slide" style="overflow: hidden">
+                        {% for wheel in wheels %}
+                            <a href="#"><img src="{{ wheel.img }}"/></a>
+                        {% endfor %}
+					</div>
+
+					<ul class="ico">
+						<li class="active">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+					</ul>
+					<div class="s_dis">
+                        {% for wheel in wheel2 %}
+                            <img src="{{ wheel.img }}" />
+                        {% endfor %}
+					</div>
+
+				</div>
+				<!--第三部分04-->
+				<div class="c_Tv">
+					<div class="T_top">
+						<h3>正在直播</h3>
+						<span style="margin-top: 5px;height: 212px">
+							<a>
+                                <img src="{{ livetvs.onlivetv.img }}" style="margin-top: 8px"/>
+                            </a>
+						</span>
+					</div>
+					<div class="T_but">
+						<dl>
+							<dt>当前播放{{ livetvs.onlivetv.actiontime }}</dt>
+							<dd style="padding-top: 4px;">{{ livetvs.onlivetv.name }}</dd>
+							<dd><i>{{ livetvs.onlivetv.discount }}</i>¥{{ livetvs.onlivetv.price }}</dd>
+						</dl>
+					</div>
+					<div class="T_fot" style="background:#eeeeee;width: 239px;">
+						<h4><a href="#"><img src="{{ livetvs.nextlivetv.img }}" style="width: 50px;height: 50px"/></a></h4>
+						<ul>
+							<li>{{ livetvs.nextlivetv.name }}</li>
+							<li>下一节目{{ livetvs.nextlivetv.actiontime }}</li>
+							<li><i>{{ livetvs.nextlivetv.discount }}</i>¥{{ livetvs.nextlivetv.price }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--第四部分-->
+		<div id="shop">
+                <div class="s_left">
+				<a id="left"></a>
+				<a id="right"></a>
+				<h3>今日特惠</h3>
+				<div class="l_see">
+					<ul class="l_ul">
+                        {% for perfer in todayperfer %}
+                            <li>
+                                <a href="{% url 'contents:detail' perfer.goodsid %}"><img src="{{ perfer.img }}" /></a>
+                                <p>{{ perfer.name }}</p>
+                                <span>风尚价：¥{{ perfer.price }}</span>
+                            </li>
+                        {% endfor %}
+					</ul>
+				</div>
+			</div>
+
+			<div class="s_middle">
+				<a class="a_left"></a>
+				<a class="a_right"></a>
+				<div class="m_top">
+					<h4 style="width: 60px">TV热播</h4>
+				</div>
+				<div id="mm_bb">
+
+					<div id="mmm_bb">
+
+                        {% for tvhot in tvhots %}
+                            <div id="m_bb">
+							<div class="m_le">
+								<div class="mm_top">
+                                    <a href="{% url 'contents:detail' tvhot.1.goodsid %}">
+                                        <img src="{{ tvhot.1.img }}" style="width: 133px;height: 133px"/>
+                                        <p>{{ tvhot.1.name }}<i>{{ tvhot.1.discount }}</i><em>￥{{ tvhot.1.price }}</em></p>
+                                    </a>
+								</div>
+								<div class="mm_bot">
+                                    <a href="{% url 'contents:detail' tvhot.2.goodsid %}">
+                                        <img src="{{ tvhot.2.img }}" style="width: 133px;height: 133px" />
+                                        <p>{{ tvhot.2.name }}<i>{{ tvhot.2.discount }}</i><em>￥{{ tvhot.2.price }}</em></p>
+                                    </a>
+								</div>
+							</div>
+							<div class="m_m">
+                                <a href="{% url 'contents:detail' tvhot.3.goodsid %}">
+                                    <img src="{{ tvhot.3.img }}" style="width: 208px;height: 208px"/>
+                                    <h4>{{ tvhot.3.name }}<i>{{ tvhot.3.discount }}</i><em>￥{{ tvhot.3.price }}</em></h4>
+                                </a>
+							</div>
+							<div class="m_r">
+								<div class="mm_top">
+                                    <a href="{% url 'contents:detail' tvhot.4.goodsid %}">
+                                        <img src="{{ tvhot.4.img }}" style="width: 133px;height: 133px"/>
+                                        <p>{{ tvhot.4.name }}<i>{{ tvhot.4.discount }}</i><em>￥{{ tvhot.4.price }}</em></p>
+                                    </a>
+								</div>
+								<div class="mm_bot">
+                                    <a href="{% url 'contents:detail' tvhot.0.goodsid %}">
+                                        <img src="{{ tvhot.0.img }}" style="width: 133px;height: 133px"/>
+                                        <p>{{ tvhot.0.name }}<i>{{ tvhot.0.discount }}</i><em>￥{{ tvhot.0.price }}</em></p>
+                                    </a>
+								</div>
+							</div>
+						</div>
+                        {% endfor %}
+
+					</div>
+				</div>
+			</div>
+			<div class="s_right">
+				<h2>风尚头条</h2>
+				<div class="news">
+                    {% for new in news %}
+                        <a href="{{ new.links }}" class="mynews">[{{ new.type }}] &nbsp;{{ new.title }}</a>
+                    {% endfor %}
+
+				</div>
+			</div>
+		</div>
+		<!--第五部分-->
+		<div id="imgcor">
+			<img src="/static/img/01/lin.jpg" />
+		</div>
+		<!--第六部分  F1-->
+    <input type="hidden" value="{{ hidden }}" id="hidden" position="{{ class_position.0 }}{{ class_position.1 }}">
+    {% for key,value in allgoods.items %}
+
+		<div class="live{{ value.id.1 }}">
+			<div class="l_one">
+				<a href="#">更多</a>
+				<h3 id="{{ value.id.0 }}">{{ value.id.1 }}F.{{ key }}</h3>
+			</div>
+			<div class="l_last">
+				<div class="l_mike">
+					<img src="{{ value.titlepage }}" />
+				</div>
+				<div class="l_content">
+					<div class="con_top">
+						<a href="{% url 'contents:index' %}" class="c_sp">热销商品推荐</a>
+                        {% for type in value.two_title %}
+                            <a href="?type={{ type }}" >{{ type }}</a>
+                        {% endfor %}
+
+					</div>
+					<div class="con_list">
+						<div class="cont_left">
+							<div class="contt_top">
+                                <a href="{% url 'contents:detail' value.goodsone.0.goodsid %}">
+                                    <img src="{{ value.goodsone.0.img }}" style="width: 133px;height: 133px" />
+                                    <p>{{ value.goodsone.0.name }}<em>￥{{ value.goodsone.0.price }}</em></p>
+                                </a>
+							</div>
+							<div class="contt_bot">
+                                <a href="{% url 'contents:detail' value.goodsone.1.goodsid %}">
+                                    <img src="{{ value.goodsone.1.img }}" style="width: 133px;height: 133px"/>
+                                    <p>{{ value.goodsone.1.name }}<em>￥{{ value.goodsone.1.price }}</em></p>
+                                </a>
+							</div>
+						</div>
+						<div class="cont_m">
+                            <a href="{% url 'contents:detail' value.goodsone.2.goodsid %}">
+                                <img src="{{ value.goodsone.2.img }}" style="width: 208px;height: 208px"/>
+                                <h4>{{ value.goodsone.2.name }}<em>￥{{ value.goodsone.2.price }}</em></h4>
+                            </a>
+						</div>
+						<div class="cont_right">
+							<div class="contt_top">
+                                <a href="{% url 'contents:detail' value.goodsone.3.goodsid %}">
+                                    <img src="{{ value.goodsone.3.img }}" style="width: 133px;height: 133px"/>
+                                    <p>{{ value.goodsone.3.name }}<em>￥{{ value.goodsone.3.price }}</em></p>
+                                </a>
+							</div>
+							<div class="contt_bot">
+                                <a href="{% url 'contents:detail' value.goodsone.4.goodsid %}">
+                                    <img src="{{ value.goodsone.4.img }}" style="width: 133px;height: 133px" />
+                                    <p>{{ value.goodsone.4.name }}<em>￥{{ value.goodsone.4.price }}</em></p>
+                                </a>
+							</div>
+						</div>
+						<div class="con_rrig">
+                            <a href="{% url 'contents:detail' value.goodsone.5.goodsid %}">
+                                <img src="{{ value.goodsone.5.img }}" style="width: 208px;height: 208px" />
+                                <h4>{{ value.goodsone.5.name }}<em>￥{{ value.goodsone.5.price }}</em></h4>
+                            </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    {% endfor %}
+
+
+{% endblock %}
+
+
+{% block last_js %}
+    <script>
+        func1()
+        func2()
+
+        function func1() {
+            var num = parseInt($('#hidden').val())
+            document.documentElement.scrollTop = num
+        }
+
+        function func2() {
+            var class_num = $('#hidden').attr('position')  {# "00" #}
+            var firstn = parseInt(class_num[1]) - 1
+            var doublen = parseInt(class_num[0])
+
+            if (class_num[0] == 0) {
+                return false
+            }
+
+            $('.con_top').eq(firstn).find('a').removeClass()
+            $('.con_top').eq(firstn).find('a').eq(doublen).addClass('c_sp')
+
+        }
+        
+    </script>
+{% endblock %}

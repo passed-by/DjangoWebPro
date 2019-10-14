@@ -1,0 +1,121 @@
+{% extends 'base_order.html' %}
+
+{% block title %}
+我的订单详情
+{% endblock %}
+
+{% block cssjs %}
+    <link rel="stylesheet" href="/static/css/orderdetail.css"/>
+{% endblock %}
+
+{% block title2 %}
+我的订单详情列表
+{% endblock %}
+
+
+{% block tr %}
+<tr>
+    <th>序号</th>
+    <th>订单编号</th>
+    <th>商品信息</th>
+    <th>数量</th>
+    <th>价格</th>
+    <th>价格</th>
+    <th>状态</th>
+</tr>
+{% endblock %}
+
+{% block jindu %}
+
+{% endblock %}
+
+
+{% block other2 %}
+<div>
+    <a href="{% url 'orders:index' %}" class="foot_shop" style="margin-left: 15px;width: 150px;background: none no-repeat">< 返回订单列表</a>
+</div>
+{% endblock %}
+
+
+{% block main %}
+
+    {% for order in ordersdetail.values %}
+        <tr>
+            <td>
+                <lable>{{ order.id }}</lable>
+            </td>
+            <td>
+                <lable>{{ order.code }}</lable>
+            </td>
+            <td class="tdimg">
+                <lable>{{ order.gname }}</lable>
+            </td>
+            <td>
+                <label>{{ order.gnum }}&nbsp;件</label>
+            </td>
+            <td>
+                <label>{{ order.price }}&nbsp;元</label>
+            </td>
+            <td>
+                <label>{{ order.totalprice }}&nbsp;元</label>
+            </td>
+            <td>
+                <label class="status">{{ order.status }}</label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <hr style="border: 1px solid #BFBFBF;width:898px;margin-left:-4px;">
+            </td>
+        </tr>
+
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block mainjs %}
+<script>
+
+
+    $(function () {
+
+        $('.status').each(function () {
+            if ($(this).text() == '未支付') {
+                $(this).css("color", 'red')
+            }else{
+                $(this).css("color", 'blue')
+            }
+        })
+
+        $('.code').mouseover(function () {
+            $(this).css("color", 'red')
+        })
+        $('.code').mouseout(function () {
+            $(this).css("color", 'black')
+        })
+
+
+
+
+        $("#show_id").mouseenter(function () {
+            $("#first_list").css("display", "block")
+            $("#first_list").mouseleave(function () {
+                $("#first_list").css("display", "none")
+            })
+        })
+        {# 购物车跳转 #}
+        $(".p_center_cart").click(function () {
+            window.location.href = "{% url 'carts:index' %}";
+        })
+
+        {# 订单跳转 #}
+        $(".p_center_uergood").click(function () {
+            window.location.href = "{% url 'orders:index' %}";
+        })
+
+
+    })
+</script>
+{% endblock %}
+

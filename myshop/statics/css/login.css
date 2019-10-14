@@ -1,0 +1,29 @@
+*{margin: 0;padding: 0;font:12px/1.5 arial,\5b8b\4f53}
+#logo{width:900px;height: 128px;margin: 0 auto;overflow: hidden;border-bottom: 1px solid #333333;}
+.logo a{display: inline-block;float: left;margin-top: 30px;}
+.logo a:last-child{margin-top: 43px;}
+
+#login{width: 900px;height:504px;margin: 0 auto;overflow: hidden;;}
+.l_left,.login_sta{float: left;}
+.l_left{width:380px;margin-top: 7px;}
+
+.login_sta{width:480px;margin-left: 35px;}
+.user,.uerschake{display: block;margin-bottom: 10px;width: 307px;height: 34px;border: 0;}
+.user{background: url(../img/02/yhm.gif) no-repeat;}
+.uerschake{background: url(../img/02/mm.gif) no-repeat;}
+.send{margin-left: 122px;width:98px;height: 29px;}
+.login_sta p{margin-top: 30px;width: 307px;}
+.login_sta em{float: right;}
+.login_sta p input{vertical-align: middle}
+.login_sta p a{text-decoration: none;color: #999}
+#getup{display:block;width:307px;height:42px;background: url(../img/02/dl.gif)no-repeat;margin-top: 15px;}
+.text{width:307px;height: 78px;border: 1px solid #ddd;margin-top: 17px;line-height: 1.5;}
+.text p{margin: 0;margin-left: 8px;color: #666;width: 287px;line-height:1.5;}
+.text h4{margin-left:8px;margin-top: 10px;color: #d32402;}
+.l_foot{margin-top: 20px;}
+
+#fotter{width:100%;height: 174px;border-top: 1px solid #ddd;text-align: center;line-height:2;}
+#fotter span{display:inline-block;margin-top: 30px;}
+#fotter a{line-height:1.5;text-decoration: none;color:#53585F;font-size: 18px;font-weight: bold;}
+#fotter a:visited{color:#C62717;}
+#fotter h3{font-size: 12px;font-weight: 500;color: #999;line-height:2;}

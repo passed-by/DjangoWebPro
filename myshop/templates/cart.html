@@ -1,0 +1,326 @@
+{% extends 'base_order.html' %}
+
+{% block title %}
+我的购物车
+{% endblock %}
+
+
+{% block cssjs %}
+    <script type="text/javascript" src="/static/js/format.js"></script>
+    <link rel="stylesheet" href="/static/css/cart.css"/>
+{% endblock %}
+
+{% block title2 %}
+我的购物车
+{% endblock %}
+
+{% block tr %}
+<tr>
+                <th>商品</th>
+                <th>风尚价</th>
+                <th>
+                    <div class="th_city">
+                        <a style="line-height: 24px;float: left;width:81px;">江西 南昌市</a>
+                        <b class="citychos"></b>
+                    </div>
+                </th>
+                <th>数量</th>
+                <th>金额小计</th>
+            </tr>
+{% endblock %}
+
+
+{% block main %}
+    {% for name,goods in goodscarts.items %}
+        <tr class="tr" id="car_tbody">
+        <td class="td1">
+            <div class="c_src">
+                <a href="{% url 'contents:detail' goods.id %}">
+                    <img src="{{ goods.img }}"/>
+                </a>
+            </div>
+            <div class="td1div">
+                <a href="{% url 'contents:detail' goods.id %}" class="c_name" style="font-size: 14px">{{ name }}</a>
+                <p class="c_id">商品编号：<em>{{ goods.id }}</em>&nbsp;颜色：<i>无&nbsp;</i>规格：<label>无</label></p>
+            </div>
+        </td>
+        <td class="td2">
+            <p>¥&nbsp;<span>{{ goods.price }}</span></p>
+        </td>
+        <td class="td3">
+            <input type="hidden" value="{{ goods.inventory }}" id="inventory">
+            {% if goods.inventory > 0 %}
+                <p>有货</p>
+            {% else %}
+                <p style="color: red">进货中</p>
+            {% endif %}
+
+        </td>
+        <td class="td4">
+            <span class="spanff"  style="margin-top: 30px;">
+                <span class="jian" id="jian">-</span>
+                <input type="text" value="{{ goods.num }}" disabled="false"/>
+                <span class="jia" id="jia">+</span>
+            </span>
+        </td>
+        <td class="td5">
+            <p>¥&nbsp;<span class="eachmonery" id="onemonery"></span></p>
+        </td>
+        <td class="td6">
+            <p class="td6div">
+                {% if goods.selected == 'true' %}
+                    <input type="checkbox" class="checkbox" checked>
+                {% else %}
+                    <input type="checkbox" class="checkbox">
+                {% endif %}
+
+            </p>
+        </td>
+    </tr>
+    {% endfor %}
+{% endblock %}
+
+
+{% block other1 %}
+<div id="pay">
+            <hr>
+            <div class="pay_1">
+                <input type="hidden" value="{{ secretkey }}">
+                <a class="removecart" id="removemycart">清空购物车</a>
+                <div class="paybox1">
+                    <i>总计：</i>
+                    <p>促销折扣：</p>
+                </div>
+                <div class="paybox2">
+                    <b>¥ <sapn id="totalmoney" ></sapn></b>
+                    <p>-¥ <sapn id="totalmoney2" ></sapn></p>
+                </div>
+
+            </div>
+            <div class="pay_2">
+                <a>你可获积分：<em id="totaljifen"></em></a>
+                <b>总计(不含运费)：</b>
+                <em>¥<strong class="sum" id="totalmoney3"></strong></em>
+            </div>
+        </div>
+{% endblock %}
+
+
+{% block other2 %}
+<div class="foot_right">
+    <span>填写送货地址 积分抵扣 优惠券使用 请点击-></span>
+    <a class="foot_end" id="toorders">去结算 ></a>
+</div>
+{% endblock %}
+
+
+{% block mainjs %}
+<script>
+    cacl2()
+    cacl()
+
+    function cacl2() {
+
+        $('.td5').each(function () {
+            var oneprice = 0
+            var num = parseInt($(this).siblings('.td4').find('input').val())
+            var price = parseFloat($(this).siblings('.td2').find('span').text())
+            oneprice = num * price
+            $(this).find('p').find('span').text(oneprice)
+
+        })
+    }
+
+    {# 计算总金额 #}
+    function cacl() {
+        var totalprice = 0
+        var totalprice2 = 0
+        var totalprice3 = 0
+        var jifen = 0
+        $('.eachmonery').each(function () {
+            {# 获取售价与数量 #}
+            var money = parseFloat($(this).text())
+
+            if ($(this).parent().parent().siblings('.td6').find('.td6div').find('input').prop('checked')) {
+                totalprice += money
+            }
+
+        })
+
+        $('#totalmoney').text(totalprice.toFixed(2))
+        totalprice2 = totalprice * 0.05
+        $('#totalmoney2').text(totalprice2.toFixed(2))
+        totalprice3 = totalprice - totalprice2
+        $('#totalmoney3').text(totalprice3.toFixed(2))
+        jifen = parseInt(totalprice3/100)
+        $('#totaljifen')[0].innerText = jifen
+    }
+
+
+    $(function () {
+
+        var inventory = $('#inventory').val()
+
+        {#  选择按钮 #}
+        $('.checkbox').click(function () {
+            var num = parseInt($(this).parent().parent().siblings('.td4').find('.spanff').find('input').val())
+            var gid = $(this).parent().parent().siblings('.td1').find('.td1div').find('p').find('em')[0].innerText
+            var isselected = $(this).prop('checked')
+            cacl2()
+            cacl()
+            pushdata(gid,num,isselected)
+
+        })
+
+        {# 增加按钮 #}
+        $('.jia').click(function () {
+            var num = parseInt($(this).siblings('input').val())
+            var gid = $(this).parent().parent().siblings('.td1').find('.td1div').find('p').find('em')[0].innerText
+            var isselected = $(this).parent().parent().siblings('.td6').find('.td6div').find('input').prop('checked')
+
+            num += 1
+
+            if (num+1 > inventory) {
+                alert("商品库存不足!")
+                return false
+            }
+            $(this).siblings('input').val(num)
+            cacl2()
+            cacl()
+            pushdata(gid, num, isselected)
+
+        })
+
+        {# 减少按钮 #}
+        $('.jian').click(function () {
+            var num = parseInt($(this).siblings('input').val())
+            var gid = $(this).parent().parent().siblings('.td1').find('.td1div').find('p').find('em')[0].innerText
+            var isselected = $(this).parent().parent().siblings('.td6').find('.td6div').find('input').prop('checked')
+
+            num -= 1
+
+            if (num == 0) {
+                if (confirm("确认移出该商品?")) {
+                    pushdata(gid, num, isselected)
+                    $(this).parent().parent().parent()[0].remove()
+                    return false
+                } else {
+                    num += 1
+                    return false
+                }
+            }
+            $(this).siblings('input').val(num)
+
+            cacl2()
+            cacl()
+            pushdata(gid, num, isselected)
+
+        })
+
+        {# 提交数据函数 #}
+        var pushdata = function (gid, num, isselected) {
+            $.ajax({
+                url:{% url 'carts:update' %},
+                type:"post",
+                data:{
+                    "gid":gid,
+                    "num":num,
+                    "selected":isselected
+                },
+                dataType:"json",
+                headers:{
+                    "X-CSRFToken":"{{ csrf_token }}"
+                },
+                success:function (data) {
+                    console.log(data)
+                }
+            })
+        }
+
+        {# 跳转到订单列表 #}
+        $('#toorders').click(function () {
+            var totalmonery = parseInt($("#totalmoney3").text())
+            if (!totalmonery>0) {
+                alert('选择商品数量为零~')
+                return false
+            }
+
+            $.ajax({
+                url:{% url 'orders:index' %},
+                type:"post",
+                dataType:"json",
+                headers:{
+                    "X-CSRFToken":"{{ csrf_token }}"
+                },
+                success:function (data) {
+                    var isload = true
+                    if (data.data == 'null-cart') {
+                        alert("购物车中没有商品!")
+                    } else if (data.data == 'not-have') {
+                        alert("{}商品库存不足!".format(data.goods))
+
+                    }else if (data.data == 'zero-num') {
+                        alert("商品数量为 0 !")
+                    }  else if (data.data == 'ok') {
+                        isload = false
+                        location.href = 'http://localhost:8000/orders/'
+                    }
+
+                    if (isload) {
+                        location.reload()
+                    }
+                }
+            })
+        })
+
+        {# 清空购物车 #}
+        $('#removemycart').click(function () {
+            var secretkey = $(this).siblings('input').val()
+            console.log(secretkey)
+
+            if (!confirm("确认清空购物车?")) {
+                return false
+            }
+
+            $.ajax({
+                url:{% url 'carts:deleteall' %},
+                type:"post",
+                data:{
+                    'secretkey':secretkey,
+                },
+                dataType:"json",
+                headers:{
+                    "X-CSRFToken":"{{ csrf_token }}"
+                },
+                success:function (data) {
+                    if (data.data == 'bad-key') {
+                        alert("清空失败!")
+                    }
+                    location.reload()
+                }
+            })
+        })
+
+        {# 我的风尚 #}
+        $("#show_id").mouseenter(function() {
+            $("#first_list").css("display", "block")
+            $("#first_list").mouseleave(function() {
+                $("#first_list").css("display", "none")
+		    })
+	    })
+
+         {# 购物车跳转 #}
+         $(".p_center_cart").click(function(){
+             window.location.href="{% url 'carts:index' %}";
+         })
+
+        {# 订单跳转 #}
+         $(".p_center_uergood").click(function(){
+             window.location.href="{% url 'orders:index' %}";
+         })
+    })
+
+</script>
+{% endblock %}
+
+

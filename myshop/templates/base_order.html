@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link rel="shortcut icon" href=http://resource.fstvgo.com/image/Favicon.ico/>
+    <link rel="stylesheet" href="/static/css/ux_1474353364_3114414/demo.css"/>
+    <link rel="stylesheet" href="/static/css/ux_1474353364_3114414/iconfont.css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.12.3.js"></script>
+    <script type="text/javascript" src="/static/js/cart.js"></script>
+    <link rel="stylesheet" href="/static/css/fstvgo.css"/>
+
+    {% block cssjs %}
+
+    {% endblock %}
+
+</head>
+<body>
+<div id="par">
+
+    <div id="prism">
+        <div class="pri_1">
+            <div class="p_center">
+
+                <div class="p_center_cart">
+
+                    <p class="p_cart">
+
+                        <i class="iconfont">&#xe600;</i>
+                    <div style="width:18px;padding: 8px 8px 0px 8px;" id="cart1">购物车</div>
+
+                    </p>
+
+                </div>
+
+                <div class="p_center_uergood">
+                    <a>
+                        <i class="iconfont">&#xe603;</i>
+                        <b>我的订单</b>
+                    </a>
+                </div>
+                <div class="p_center_uertick">
+                    <a>
+                        <i class="iconfont">&#xe605;</i>
+                        <b>抵用券</b>
+                    </a>
+                </div>
+                <div class="p_center_uerlove">
+                    <a style="">
+                        <b>我的收藏</b>
+                        <i class="iconfont">&#xe601;</i>
+                    </a>
+                </div>
+            </div>
+            <div class="p_foot">
+                <div class="p_foot_uerthink">
+                    <a>
+                        <i class="iconfont">&#xe604;</i>
+                        <b>用户反馈</b>
+                    </a>
+                </div>
+                <div class="p_foot_uerma">
+                    <a>
+                        <i class="iconfont">&#xe602;</i>
+                        <em><img src="/static/img/03/QRCodeHandler.png" style="width: 100px;height: 100px;"/></em>
+                    </a>
+                </div>
+                <div class="p_foot_uerup">
+                    <a>
+                        <i class="iconfont" id="totop">&#xe606;</i>
+                        <b>返回顶部</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---->
+    <div class="par1">
+        <div class="par_box">
+            <div id="first_list">
+                <ul>
+                    <li>
+                        <a href="#">我的订单</a>
+                    </li>
+                    <li>
+                        <a href="#">我的积分</a>
+                    </li>
+                    <li>
+                        <a href="#">我的优惠券</a>
+                    </li>
+                    <li>
+                        <a href="#">我的消息</a>
+                    </li>
+                    <li>
+                        <a href="#">我的收藏</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="par1_r">
+                <input type="hidden" id="islogin" value="{{ islogin }}">
+                {% if islogin %}
+                    <p>
+                        <label>你好，</label>
+                        <a href="#" style="font-size: 14px;color: red" id="onlineuser">{{ islogin }}</a>&nbsp;
+                        <label>用户!</label>&nbsp;&nbsp;
+                        <a href="{% url 'user:logout' %}">[退出]</a>&nbsp;&nbsp;
+                        <a></a>
+                    </p>
+                {% else %}
+                    <p>
+                        <a href="{% url 'user:login' %}">登录</a>&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'user:register' %}">免费注册&nbsp;|&nbsp;<label
+                                style="color : #d32402;">送50元</label></a>&nbsp;&nbsp;&nbsp;
+                        <a href="#">电话订购会员登录&nbsp;|&nbsp;<label style="color: #d32402;">送50元</label></a>&nbsp;&nbsp;&nbsp;
+                    </p>
+                {% endif %}
+                <p>
+                    <a href="#" id="show_id">我的风尚</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="cart_hrader">
+    <div class="header_logo">
+        <a href="{% url 'contents:index' %}"><img src="/static/img/02/logo.gif"/></a>
+        {% block jindu %}
+            <ul>
+                <li>1.我的购物车</li>
+                <li>2.填写核对订单信息</li>
+                <li>3.成功提交订单</li>
+            </ul>
+        {% endblock %}
+
+    </div>
+    <div class="header_right">
+        <h2><em>
+            {% block title2 %}
+            
+            {% endblock %}
+        </em><a><img src="/static/img/bg_cart.jpg"/></a></h2>
+        <i><img src="/static/img/tv.gif.jpg"/></i>
+    </div>
+</div>
+<div class="middle">
+    <div id="main">
+        <table class="table">
+            <thead>
+            {% block tr %}
+
+            {% endblock %}
+            </thead>
+            <tbody class="myorder">
+
+            {% block main %}
+            
+            {% endblock %}
+
+
+            </tbody>
+        </table>
+
+    {% block other1 %}
+    
+    {% endblock %}
+
+
+    </div>
+    <div class="mian_foot">
+        <a class="foot_shop" href="{% url 'contents:index' %}">继续购物</a>
+        {% block other2 %}
+        
+        {% endblock %}
+    </div>
+</div>
+<div id="last">
+    <div class="last_text">
+        <span><a href="#">触屏版</a></span>
+        <span><a href="#">电脑版</a></span>
+        <h3>ICP经营许可证：赣ICP备15000001号</h3>
+        <h3>24小时订购和服务热线：4001-677-077</h3>
+        <h3>Copyright 2008-2014，www.fstvgo.com 风尚购物 版权所有</h3>
+        <h3>本网站用字经北京北大方正电子有限公司授权许可</h3>
+    </div>
+</div>
+{% block mainjs %}
+
+{% endblock %}
+
+
+
+
+</body>
+</html>
